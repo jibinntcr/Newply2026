@@ -1433,7 +1433,7 @@ textarea:focus-visible {
 /* Page Header for Inner Pages */
 .page-header {
     background: linear-gradient(135deg, rgba(20, 24, 28, 0.92) 0%, rgba(68, 48, 32, 0.9) 100%),
-                url('../img/carousel-1.jpg') center/cover no-repeat;
+                url('/img/carousel-1.jpg') center/cover no-repeat;
     color: #FFFFFF;
     padding: clamp(3rem, 6vw, 4.5rem) 0;
     border-bottom: 3px solid var(--wood-accent);
