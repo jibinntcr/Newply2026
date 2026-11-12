@@ -117,8 +117,10 @@ export default function Footer() {
         rel="noopener noreferrer"
         className="whatsapp-float"
         aria-label="Chat on WhatsApp"
+        title="Chat on WhatsApp with Managing Partner"
       >
         <i className="bi bi-whatsapp"></i>
+        <span className="whatsapp-float-tooltip">Chat with us</span>
       </a>
     </>
   );

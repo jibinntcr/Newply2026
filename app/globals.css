@@ -1477,27 +1477,65 @@ a.btn-primary {
     border: 0;
 }
 
-/* Floating WhatsApp Button */
+/* Floating WhatsApp Button (Anchored Bottom Right) */
 .whatsapp-float {
     position: fixed;
     bottom: 24px;
     right: 24px;
-    width: 56px;
-    height: 56px;
+    width: 54px;
+    height: 54px;
     background-color: #25D366;
     color: #FFFFFF !important;
     border-radius: 50%;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem;
-    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
-    z-index: 999;
-    transition: transform 0.25s ease, background-color 0.25s ease;
+    font-size: 1.75rem;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.42), 0 2px 6px rgba(0, 0, 0, 0.08);
+    z-index: 1020;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, box-shadow 0.25s ease;
+    text-decoration: none;
 }
-.whatsapp-float:hover, .whatsapp-float:focus {
-    background-color: #1EBE5D;
-    transform: scale(1.08);
+.whatsapp-float:hover {
+    background-color: #20BA5A;
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.52), 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+.whatsapp-float:active {
+    transform: scale(0.96);
+}
+.whatsapp-float-tooltip {
+    position: absolute;
+    right: calc(100% + 12px);
+    background: rgba(17, 24, 39, 0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 6px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+.whatsapp-float-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(17, 24, 39, 0.94);
+}
+.whatsapp-float:hover .whatsapp-float-tooltip {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 /* Footer */
@@ -2296,41 +2334,43 @@ main > .section-padding:first-child {
 }
 
 /* ==========================================================================
-   Back to Top Floating Button (Up Arrow for Easy Navigation)
+   Back to Top Floating Button (Up Arrow - Stacked Cleanly Above WhatsApp)
    ========================================================================== */
 .back-to-top-btn {
   position: fixed;
-  bottom: 28px;
-  right: 28px;
+  bottom: 88px; /* Sits 10px above WhatsApp (24px bottom + 54px height + 10px gap) */
+  right: 27px;  /* Centered with WhatsApp (24px + (54 - 48)/2 = 27px) */
   width: 48px;
   height: 48px;
   border-radius: 50%;
   background: linear-gradient(135deg, #C7202B 0%, #A31720 100%);
   color: #FFFFFF;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 20px rgba(199, 32, 43, 0.38), 0 2px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 18px rgba(199, 32, 43, 0.38), 0 2px 6px rgba(0, 0, 0, 0.1);
   z-index: 1025;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(16px) scale(0.9);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  transform: translateY(12px) scale(0.88);
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease, box-shadow 0.2s ease;
   cursor: pointer;
 }
 
 .back-to-top-btn.visible {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   transform: translateY(0) scale(1);
 }
 
 .back-to-top-btn:hover {
   background: linear-gradient(135deg, #D32532 0%, #B81822 100%);
   color: #FFFFFF;
-  transform: translateY(-3px) scale(1.06);
-  box-shadow: 0 10px 28px rgba(199, 32, 43, 0.5), 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 10px 24px rgba(199, 32, 43, 0.48), 0 4px 10px rgba(0, 0, 0, 0.14);
 }
 
 .back-to-top-btn:focus-visible {
@@ -2339,9 +2379,17 @@ main > .section-padding:first-child {
 }
 
 @media (max-width: 575.98px) {
+  .whatsapp-float {
+    bottom: 18px;
+    right: 18px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.55rem;
+  }
+
   .back-to-top-btn {
-    bottom: 22px;
-    right: 20px;
+    bottom: 76px; /* 18px bottom + 50px WhatsApp height + 8px gap */
+    right: 21px;  /* 18px + (50 - 44)/2 = 21px */
     width: 44px;
     height: 44px;
   }
