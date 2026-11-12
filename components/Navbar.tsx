@@ -19,6 +19,7 @@ export default function Navbar() {
         setIsSticky(false);
       }
     };
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export const metadata: Metadata = {
   title: 'Newtech Ply & Boards | Precision Plywood Manufacturer | Perumbavoor, Kerala',
@@ -66,6 +67,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         <main id="main-content">{children}</main>
+        <ScrollToTop />
         <Footer />
         {/* Bootstrap 5 Bundle for dropdowns & modals */}
         <script

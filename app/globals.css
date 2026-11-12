@@ -268,16 +268,24 @@ a.btn-primary {
     gap: 0.45rem;
 }
 
-/* Navbar: Perfectly Aligned & Single Baseline */
+/* Navbar: Perfectly Aligned & Fixed/Sticky with Frosted Glass */
 .navbar-custom {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
     background-color: var(--bg-surface);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     padding: 0.65rem 0;
     border-bottom: 1px solid var(--border-light);
-    transition: all 0.25s ease;
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .navbar-custom.sticky-active {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+    padding: 0.5rem 0;
+    border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 .navbar-brand {
     display: flex;
@@ -2286,5 +2294,58 @@ main > .section-padding:first-child {
   border-left: 2px solid rgba(199, 32, 43, 0.25) !important;
   border-right: 2px solid rgba(199, 32, 43, 0.25) !important;
 }
+
+/* ==========================================================================
+   Back to Top Floating Button (Up Arrow for Easy Navigation)
+   ========================================================================== */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C7202B 0%, #A31720 100%);
+  color: #FFFFFF;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(199, 32, 43, 0.38), 0 2px 8px rgba(0, 0, 0, 0.12);
+  z-index: 1025;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(0.9);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.back-to-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.back-to-top-btn:hover {
+  background: linear-gradient(135deg, #D32532 0%, #B81822 100%);
+  color: #FFFFFF;
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 10px 28px rgba(199, 32, 43, 0.5), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.back-to-top-btn:focus-visible {
+  outline: 3px solid rgba(199, 32, 43, 0.4);
+  outline-offset: 3px;
+}
+
+@media (max-width: 575.98px) {
+  .back-to-top-btn {
+    bottom: 22px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
 
 
