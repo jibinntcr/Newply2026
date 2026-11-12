@@ -1550,3 +1550,219 @@ textarea:focus-visible {
         display: none;
     }
 }
+
+
+
+/* ==========================================================================
+   World-Class Executive Team Card System
+   ========================================================================== */
+.team-exec-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+.team-exec-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px -12px rgba(199, 32, 43, 0.18), 0 10px 24px rgba(0, 0, 0, 0.08);
+    border-color: rgba(199, 32, 43, 0.35);
+}
+
+.team-exec-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 290px;
+    overflow: hidden;
+    background-color: #2c1b12;
+}
+
+.team-exec-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: block;
+}
+
+.team-exec-card:hover .team-exec-img {
+    transform: scale(1.06);
+}
+
+.team-exec-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75) 100%);
+    pointer-events: none;
+}
+
+.team-exec-badges {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.team-exec-status {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(6px);
+    color: #1e8449;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.35rem 0.75rem;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.team-exec-dept {
+    background: rgba(31, 36, 33, 0.85);
+    backdrop-filter: blur(6px);
+    color: #FAF8F5;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.75rem;
+    border-radius: 30px;
+}
+
+.team-exec-body {
+    padding: 1.5rem 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.team-exec-name {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.35rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+}
+
+.team-exec-role {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--brand-red);
+    background: rgba(199, 32, 43, 0.08);
+    padding: 0.35rem 0.9rem;
+    border-radius: 30px;
+    margin-bottom: 0.9rem;
+    border: 1px solid rgba(199, 32, 43, 0.18);
+}
+
+.team-exec-bio {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+}
+
+.team-exec-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    justify-content: center;
+    margin-bottom: 1.35rem;
+}
+
+.team-exec-chip {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--wood-dark);
+    background: var(--bg-warm);
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    border: 1px solid rgba(139, 90, 43, 0.16);
+    white-space: nowrap;
+}
+
+.team-exec-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+    padding: 1.15rem 1.5rem 1.4rem;
+    background: #faf8f5;
+    margin-top: auto;
+}
+
+.team-exec-btn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+}
+
+.team-exec-btn-call {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.65rem 0.75rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    border-radius: 10px;
+    text-decoration: none;
+    background: #ffffff;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.team-exec-btn-call:hover {
+    background: #ffffff;
+    color: var(--brand-red);
+    border-color: var(--brand-red);
+    box-shadow: 0 4px 12px rgba(199, 32, 43, 0.15);
+    transform: translateY(-1px);
+}
+
+.team-exec-btn-wa {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.65rem 0.75rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    border-radius: 10px;
+    text-decoration: none;
+    background: #25D366;
+    color: #ffffff;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.team-exec-btn-wa:hover {
+    background: #1eb956;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.38);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 575.98px) {
+    .team-exec-img-wrap {
+        height: 250px;
+    }
+    .team-exec-btn-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -38,7 +38,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet"/>
 
   <!-- Custom Stylesheet -->
-  <link href="css/style.css" rel="stylesheet"/>
+  <link href="css/style.css?v=2.2" rel="stylesheet"/>
 
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
@@ -80,6 +80,220 @@
     ]
   }
   </script>
+  <!-- Critical Executive Card Styles -->
+  <style>
+    .team-exec-card {
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.03);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+    }
+    .team-exec-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 48px -12px rgba(199, 32, 43, 0.18), 0 10px 24px rgba(0, 0, 0, 0.08);
+      border-color: rgba(199, 32, 43, 0.35);
+    }
+    .team-exec-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 290px;
+      overflow: hidden;
+      background-color: #2c1b12;
+    }
+    .team-exec-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: block;
+    }
+    .team-exec-card:hover .team-exec-img {
+      transform: scale(1.06);
+    }
+    .team-exec-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75) 100%);
+      pointer-events: none;
+    }
+    .team-exec-badges {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
+    }
+    .team-exec-status {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(6px);
+      color: #1e8449;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.35rem 0.75rem;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    .team-exec-dept {
+      background: rgba(31, 36, 33, 0.85);
+      backdrop-filter: blur(6px);
+      color: #FAF8F5;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.75rem;
+      border-radius: 30px;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #27ae60;
+      display: inline-block;
+      position: relative;
+    }
+    .status-dot::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background-color: #27ae60;
+      opacity: 0.6;
+      animation: statusPulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    }
+    @keyframes statusPulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(2.2); opacity: 0; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+    .team-exec-body {
+      padding: 1.5rem 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      text-align: center;
+    }
+    .team-exec-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: #1f2421;
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.01em;
+    }
+    .team-exec-role {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #C7202B;
+      background: rgba(199, 32, 43, 0.08);
+      padding: 0.35rem 0.9rem;
+      border-radius: 30px;
+      margin-bottom: 0.9rem;
+      border: 1px solid rgba(199, 32, 43, 0.18);
+    }
+    .team-exec-bio {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: #555555;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
+    .team-exec-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      justify-content: center;
+      margin-bottom: 1.35rem;
+    }
+    .team-exec-chip {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: #2c1b12;
+      background: #FAF8F5;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      border: 1px solid rgba(139, 90, 43, 0.16);
+      white-space: nowrap;
+    }
+    .team-exec-footer {
+      border-top: 1px solid rgba(0, 0, 0, 0.07);
+      padding: 1.15rem 1.5rem 1.4rem;
+      background: #faf8f5;
+      margin-top: auto;
+    }
+    .team-exec-btn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+    }
+    .team-exec-btn-call {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.65rem 0.75rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 10px;
+      text-decoration: none;
+      background: #ffffff;
+      color: #1f2421;
+      border: 1px solid #e0dacf;
+      transition: all 0.2s ease;
+    }
+    .team-exec-btn-call:hover {
+      background: #ffffff;
+      color: #C7202B;
+      border-color: #C7202B;
+      box-shadow: 0 4px 12px rgba(199, 32, 43, 0.15);
+      transform: translateY(-1px);
+    }
+    .team-exec-btn-wa {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.65rem 0.75rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 10px;
+      text-decoration: none;
+      background: #25D366;
+      color: #ffffff;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .team-exec-btn-wa:hover {
+      background: #1eb956;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.38);
+      transform: translateY(-1px);
+    }
+    @media (max-width: 575.98px) {
+      .team-exec-img-wrap {
+        height: 250px;
+      }
+      .team-exec-btn-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -1105,87 +1319,108 @@
         <div class="row g-4 justify-content-center">
           <!-- Leader 1: Muneer K H -->
           <div class="col-md-6 col-lg-4">
-            <div class="team-card-modern">
-              <div class="team-avatar-container">
-                <div class="team-avatar-ring"></div>
-                <img src="img/team-1.jpg" alt="Muneer K H - Managing Partner" class="team-avatar-img" width="136" height="136" loading="lazy"/>
-                <div class="team-status-pill" title="Active at Perumbavoor Plant">
-                  <span class="status-dot"></span> Plant Active
+            <div class="team-exec-card">
+              <div class="team-exec-img-wrap">
+                <img src="img/team-1.jpg" alt="Muneer K H - Managing Partner" class="team-exec-img" width="400" height="290" loading="lazy"/>
+                <div class="team-exec-gradient"></div>
+                <div class="team-exec-badges">
+                  <div class="team-exec-status" title="Active on site at Perumbavoor Plant">
+                    <span class="status-dot"></span> Plant Active
+                  </div>
+                  <div class="team-exec-dept">Operations</div>
                 </div>
               </div>
-              <h3 class="team-name">Muneer K H</h3>
-              <div><span class="team-role">Managing Partner</span></div>
-              <p class="team-bio">Directs timber procurement, raw material quality control, and production scheduling at our Perumbavoor manufacturing facility.</p>
-              <div class="team-tags">
-                <span class="team-tag">Timber Procurement</span>
-                <span class="team-tag">Hot-Press Operation</span>
-                <span class="team-tag">IS:710 Compliance</span>
+              <div class="team-exec-body">
+                <h3 class="team-exec-name">Muneer K H</h3>
+                <div><span class="team-exec-role">Managing Partner</span></div>
+                <p class="team-exec-bio">Directs mill operations, timber procurement, raw material quality control, and production scheduling at our Perumbavoor manufacturing facility.</p>
+                <div class="team-exec-chips">
+                  <span class="team-exec-chip"><i class="bi bi-tree me-1 text-danger"></i>Timber Sourcing</span>
+                  <span class="team-exec-chip"><i class="bi bi-gear-wide-connected me-1 text-danger"></i>Hot-Press Ops</span>
+                  <span class="team-exec-chip"><i class="bi bi-patch-check me-1 text-danger"></i>IS:710 Compliance</span>
+                </div>
               </div>
-              <div class="team-contact-actions">
-                <a href="tel:+919745450618" class="team-action-btn team-action-call">
-                  <i class="bi bi-telephone-fill text-danger"></i> +91 97454 50618
-                </a>
-                <a href="https://wa.me/919745450618?text=Hello%20Muneer%2C%20I%20would%20like%20to%20discuss%20plywood%20manufacturing%20specifications." target="_blank" rel="noopener noreferrer" class="team-action-btn team-action-wa">
-                  <i class="bi bi-whatsapp"></i> WhatsApp Muneer
-                </a>
+              <div class="team-exec-footer">
+                <div class="team-exec-btn-grid">
+                  <a href="tel:+919745450618" class="team-exec-btn-call">
+                    <i class="bi bi-telephone-fill text-danger"></i> Call
+                  </a>
+                  <a href="https://wa.me/919745450618?text=Hello%20Muneer%2C%20I%20would%20like%20to%20discuss%20plywood%20manufacturing%20specifications." target="_blank" rel="noopener noreferrer" class="team-exec-btn-wa">
+                    <i class="bi bi-whatsapp"></i> WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Leader 2: Mahin K.H -->
           <div class="col-md-6 col-lg-4">
-            <div class="team-card-modern">
-              <div class="team-avatar-container">
-                <div class="team-avatar-ring"></div>
-                <img src="img/team-3.jpg" alt="Mahin K.H - Head of Sales & Business Development" class="team-avatar-img" width="136" height="136" loading="lazy"/>
-                <div class="team-status-pill" title="Commercial Sales Available">
-                  <span class="status-dot"></span> Sales Desk
+            <div class="team-exec-card">
+              <div class="team-exec-img-wrap">
+                <img src="img/team-3.jpg" alt="Mahin K.H - Head of Sales & Business Development" class="team-exec-img" width="400" height="290" loading="lazy"/>
+                <div class="team-exec-gradient"></div>
+                <div class="team-exec-badges">
+                  <div class="team-exec-status" title="Active Commercial Sales Desk">
+                    <span class="status-dot"></span> Sales Desk
+                  </div>
+                  <div class="team-exec-dept">Commercial</div>
                 </div>
               </div>
-              <h3 class="team-name">Mahin K.H</h3>
-              <div><span class="team-role">Head of Sales &amp; Business Dev</span></div>
-              <p class="team-bio">Leads institutional sales, contractor relationships, architectural specifications, dealer networks, and commercial bulk quotations.</p>
-              <div class="team-tags">
-                <span class="team-tag">Institutional Tenders</span>
-                <span class="team-tag">Architectural Specs</span>
-                <span class="team-tag">Wholesale Pricing</span>
+              <div class="team-exec-body">
+                <h3 class="team-exec-name">Mahin K.H</h3>
+                <div><span class="team-exec-role">Head of Sales &amp; Business Dev</span></div>
+                <p class="team-exec-bio">Leads institutional sales, contractor relationships, architectural specifications, dealer distribution, and commercial wholesale quotations.</p>
+                <div class="team-exec-chips">
+                  <span class="team-exec-chip"><i class="bi bi-building me-1 text-danger"></i>Institutional Tenders</span>
+                  <span class="team-exec-chip"><i class="bi bi-rulers me-1 text-danger"></i>Architectural Specs</span>
+                  <span class="team-exec-chip"><i class="bi bi-cash-stack me-1 text-danger"></i>Wholesale Quotes</span>
+                </div>
               </div>
-              <div class="team-contact-actions">
-                <a href="tel:+919526029853" class="team-action-btn team-action-call">
-                  <i class="bi bi-telephone-fill text-danger"></i> +91 95260 29853
-                </a>
-                <a href="https://wa.me/919526029853?text=Hello%20Mahin%2C%20I%20would%20like%20to%20request%20a%20commercial%20plywood%20quotation." target="_blank" rel="noopener noreferrer" class="team-action-btn team-action-wa">
-                  <i class="bi bi-whatsapp"></i> WhatsApp Mahin
-                </a>
+              <div class="team-exec-footer">
+                <div class="team-exec-btn-grid">
+                  <a href="tel:+919526029853" class="team-exec-btn-call">
+                    <i class="bi bi-telephone-fill text-danger"></i> Call
+                  </a>
+                  <a href="https://wa.me/919526029853?text=Hello%20Mahin%2C%20I%20would%20like%20to%20request%20a%20commercial%20plywood%20quotation." target="_blank" rel="noopener noreferrer" class="team-exec-btn-wa">
+                    <i class="bi bi-whatsapp"></i> WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Leader 3: Muhsin -->
           <div class="col-md-6 col-lg-4">
-            <div class="team-card-modern">
-              <div class="team-avatar-container">
-                <div class="team-avatar-ring"></div>
-                <img src="img/team-2.jpg" alt="Muhsin - Customer Relations & Dispatch Logistics" class="team-avatar-img" width="136" height="136" loading="lazy"/>
-                <div class="team-status-pill" title="Active Dispatch Operations">
-                  <span class="status-dot"></span> Logistics Active
+            <div class="team-exec-card">
+              <div class="team-exec-img-wrap">
+                <img src="img/team-2.jpg" alt="Muhsin - Customer Relations & Dispatch Logistics" class="team-exec-img" width="400" height="290" loading="lazy"/>
+                <div class="team-exec-gradient"></div>
+                <div class="team-exec-badges">
+                  <div class="team-exec-status" title="Active Order & Logistics Desk">
+                    <span class="status-dot"></span> Dispatch Active
+                  </div>
+                  <div class="team-exec-dept">Logistics</div>
                 </div>
               </div>
-              <h3 class="team-name">Muhsin</h3>
-              <div><span class="team-role">Customer Relations &amp; Dispatch</span></div>
-              <p class="team-bio">Coordinates dispatch schedules, transport fleets, live order tracking, and client after-sales support to ensure punctual on-site delivery.</p>
-              <div class="team-tags">
-                <span class="team-tag">Fleet Logistics</span>
-                <span class="team-tag">Site Delivery</span>
-                <span class="team-tag">Client Support</span>
+              <div class="team-exec-body">
+                <h3 class="team-exec-name">Muhsin</h3>
+                <div><span class="team-exec-role">Customer Relations &amp; Dispatch</span></div>
+                <p class="team-exec-bio">Coordinates dispatch schedules, transport fleets, live order tracking, and client after-sales support to ensure punctual on-site delivery.</p>
+                <div class="team-exec-chips">
+                  <span class="team-exec-chip"><i class="bi bi-truck me-1 text-danger"></i>Fleet Logistics</span>
+                  <span class="team-exec-chip"><i class="bi bi-geo-alt me-1 text-danger"></i>Site Delivery</span>
+                  <span class="team-exec-chip"><i class="bi bi-headset me-1 text-danger"></i>Client Support</span>
+                </div>
               </div>
-              <div class="team-contact-actions">
-                <a href="tel:+919745450618" class="team-action-btn team-action-call">
-                  <i class="bi bi-telephone-fill text-danger"></i> +91 97454 50618
-                </a>
-                <a href="https://wa.me/919745450618?text=Hello%20Muhsin%2C%20I%20would%20like%20to%20check%20an%20order%20dispatch%20status." target="_blank" rel="noopener noreferrer" class="team-action-btn team-action-wa">
-                  <i class="bi bi-whatsapp"></i> WhatsApp Muhsin
-                </a>
+              <div class="team-exec-footer">
+                <div class="team-exec-btn-grid">
+                  <a href="tel:+919745450618" class="team-exec-btn-call">
+                    <i class="bi bi-telephone-fill text-danger"></i> Call
+                  </a>
+                  <a href="https://wa.me/919745450618?text=Hello%20Muhsin%2C%20I%20would%20like%20to%20check%20an%20order%20dispatch%20status." target="_blank" rel="noopener noreferrer" class="team-exec-btn-wa">
+                    <i class="bi bi-whatsapp"></i> WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </div>
