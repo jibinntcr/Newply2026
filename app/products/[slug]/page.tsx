@@ -202,14 +202,18 @@ export default function ProductDetailPage({ params }: Props) {
                           </th>
                           <td className="text-dark">{product.screwHolding}</td>
                         </tr>
-                      <tr>
-                        <th scope="row" className="bg-light text-dark fw-bold">
-                          Boiling / Moisture Resistance
-                        </th>
-                        <td className="fw-semibold text-success">{product.boilingTolerance}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                        <tr>
+                          <th scope="row">
+                            <div className="d-flex align-items-center gap-2">
+                              <i className="bi bi-shield-fill-check text-success"></i>
+                              <span>Boiling / Moisture Resistance</span>
+                            </div>
+                          </th>
+                          <td className="fw-bold text-success">{product.boilingTolerance}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </section>
 
