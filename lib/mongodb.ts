@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/newtech_plywood';
+const MONGODB_URI = process.env.MONGODB_URI;
 
 interface CachedMongoose {
   conn: typeof mongoose | null;
@@ -14,6 +14,11 @@ if (!cached) {
 }
 
 export async function connectToDatabase(): Promise<typeof mongoose | null> {
+  // If running in Vercel and MONGODB_URI is absent or localhost, skip connection attempt
+  if (!MONGODB_URI || (process.env.VERCEL && MONGODB_URI.includes('localhost'))) {
+    return null;
+  }
+
   if (cached.conn) {
     return cached.conn;
   }

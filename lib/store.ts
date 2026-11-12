@@ -4,35 +4,58 @@ import { connectToDatabase } from './mongodb';
 import { QuoteModel, IQuote } from '@/models/Quote';
 import { ContactModel, IContact } from '@/models/Contact';
 
-const DATA_DIR = path.join(process.cwd(), 'data');
+// In serverless environments (Vercel), only /tmp is writable
+const isServerless = Boolean(process.env.VERCEL);
+const DATA_DIR = isServerless ? '/tmp/newtech-data' : path.join(process.cwd(), 'data');
 const LEADS_FILE = path.join(DATA_DIR, 'leads.json');
 
+// In-memory fallback
+let memoryStore: { quotes: any[]; contacts: any[] } = {
+  quotes: [],
+  contacts: [],
+};
+
 function ensureDataFile() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
-  }
-  if (!fs.existsSync(LEADS_FILE)) {
-    fs.writeFileSync(
-      LEADS_FILE,
-      JSON.stringify({ quotes: [], contacts: [] }, null, 2),
-      'utf-8'
-    );
+  try {
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
+    if (!fs.existsSync(LEADS_FILE)) {
+      fs.writeFileSync(
+        LEADS_FILE,
+        JSON.stringify(memoryStore, null, 2),
+        'utf-8'
+      );
+    }
+  } catch (err: any) {
+    console.warn('Filesystem access limited, using in-memory store:', err.message);
   }
 }
 
 function getLocalData() {
   ensureDataFile();
   try {
-    const raw = fs.readFileSync(LEADS_FILE, 'utf-8');
-    return JSON.parse(raw);
-  } catch {
-    return { quotes: [], contacts: [] };
+    if (fs.existsSync(LEADS_FILE)) {
+      const raw = fs.readFileSync(LEADS_FILE, 'utf-8');
+      const parsed = JSON.parse(raw);
+      if (parsed && Array.isArray(parsed.quotes)) {
+        return parsed;
+      }
+    }
+  } catch (err: any) {
+    console.warn('Could not read local file, using memory cache:', err.message);
   }
+  return memoryStore;
 }
 
 function saveLocalData(data: any) {
+  memoryStore = data;
   ensureDataFile();
-  fs.writeFileSync(LEADS_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  try {
+    fs.writeFileSync(LEADS_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  } catch (err: any) {
+    console.warn('Could not persist to disk, stored in memory:', err.message);
+  }
 }
 
 export async function saveQuote(data: {
@@ -51,7 +74,8 @@ export async function saveQuote(data: {
     status: 'new',
     createdAt: new Date().toISOString(),
   };
-  localData.quotes.unshift(newLead);
+
+  localData.quotes = [newLead, ...(localData.quotes || [])];
   saveLocalData(localData);
 
   // Attempt to save to MongoDB
@@ -82,10 +106,10 @@ export async function saveContact(data: {
     status: 'new',
     createdAt: new Date().toISOString(),
   };
-  localData.contacts.unshift(newContact);
+
+  localData.contacts = [newContact, ...(localData.contacts || [])];
   saveLocalData(localData);
 
-  // Attempt to save to MongoDB
   try {
     const db = await connectToDatabase();
     if (db) {
@@ -102,9 +126,9 @@ export async function getAllQuotes() {
   try {
     const db = await connectToDatabase();
     if (db) {
-      const quotes = await QuoteModel.find().sort({ createdAt: -1 }).lean();
-      if (quotes && quotes.length > 0) {
-        return quotes.map((q: any) => ({
+      const mongoQuotes = await QuoteModel.find({}).sort({ createdAt: -1 }).lean();
+      if (mongoQuotes && mongoQuotes.length > 0) {
+        return mongoQuotes.map((q: any) => ({
           id: q._id.toString(),
           name: q.name,
           phone: q.phone,
@@ -112,13 +136,14 @@ export async function getAllQuotes() {
           product: q.product,
           quantity: q.quantity,
           message: q.message,
-          status: q.status,
-          createdAt: q.createdAt,
+          status: q.status || 'new',
+          createdAt: q.createdAt ? q.createdAt.toISOString() : new Date().toISOString(),
+          ip: q.ip,
         }));
       }
     }
   } catch (err: any) {
-    console.warn('Error reading from MongoDB, falling back to local file:', err.message);
+    console.warn('Failed to retrieve from MongoDB, using local fallback:', err.message);
   }
 
   const localData = getLocalData();
@@ -129,22 +154,22 @@ export async function getAllContacts() {
   try {
     const db = await connectToDatabase();
     if (db) {
-      const contacts = await ContactModel.find().sort({ createdAt: -1 }).lean();
-      if (contacts && contacts.length > 0) {
-        return contacts.map((c: any) => ({
+      const mongoContacts = await ContactModel.find({}).sort({ createdAt: -1 }).lean();
+      if (mongoContacts && mongoContacts.length > 0) {
+        return mongoContacts.map((c: any) => ({
           id: c._id.toString(),
           name: c.name,
           phone: c.phone,
           email: c.email,
           subject: c.subject,
           message: c.message,
-          status: c.status,
-          createdAt: c.createdAt,
+          status: c.status || 'new',
+          createdAt: c.createdAt ? c.createdAt.toISOString() : new Date().toISOString(),
         }));
       }
     }
   } catch (err: any) {
-    console.warn('Error reading contacts from MongoDB:', err.message);
+    console.warn('Failed to retrieve contacts from MongoDB, using local fallback:', err.message);
   }
 
   const localData = getLocalData();
@@ -152,21 +177,22 @@ export async function getAllContacts() {
 }
 
 export async function updateQuoteStatus(id: string, status: 'new' | 'contacted' | 'closed') {
-  const localData = getLocalData();
-  const item = localData.quotes.find((q: any) => q.id === id);
-  if (item) {
-    item.status = status;
-    saveLocalData(localData);
-  }
-
   try {
     const db = await connectToDatabase();
     if (db) {
       await QuoteModel.findByIdAndUpdate(id, { status });
     }
   } catch (err) {
-    // handled
+    console.warn('MongoDB status update skipped');
   }
 
+  const localData = getLocalData();
+  localData.quotes = (localData.quotes || []).map((q: any) => {
+    if (q.id === id || q._id === id) {
+      return { ...q, status };
+    }
+    return q;
+  });
+  saveLocalData(localData);
   return true;
 }
