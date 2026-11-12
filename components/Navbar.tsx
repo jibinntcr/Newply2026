@@ -33,7 +33,10 @@ export default function Navbar() {
     return null; // Don't show public navbar on admin pages
   }
 
-  const isActive = (path: string) => pathname === path;
+  const isActive = (path: string) => {
+    if (path === '/') return pathname === '/';
+    return pathname?.startsWith(path);
+  };
 
   return (
     <>
@@ -85,18 +88,24 @@ export default function Navbar() {
       </div>
 
       {/* Main Navbar */}
-      <nav className={`navbar navbar-expand-lg navbar-custom ${isSticky ? 'sticky-active' : ''}`} aria-label="Main Navigation">
+      <nav className={`navbar navbar-expand-xl navbar-custom ${isSticky ? 'sticky-active' : ''}`} aria-label="Main Navigation">
         <div className="container-fluid px-3 px-xl-5">
-          <Link href="/" className="navbar-brand d-flex align-items-center gap-2">
-            <img src="/img/icon/icon-10.png" alt="Newtech Ply &amp; Boards Logo" width="46" height="46" className="brand-icon" />
-            <div className="brand-text">
+          <Link href="/" className="navbar-brand d-flex align-items-center me-3 me-xl-4 flex-shrink-0">
+            <img
+              src="/img/icon/icon-10.png"
+              alt="Newtech Ply &amp; Boards Logo"
+              width="44"
+              height="44"
+              className="brand-icon flex-shrink-0"
+            />
+            <div className="brand-text d-flex flex-column justify-content-center text-nowrap ms-2">
               <span className="brand-name">NEWTECH PLY &amp; BOARDS</span>
               <span className="brand-tagline">PREMIUM PLYWOOD MANUFACTURER</span>
             </div>
           </Link>
 
           <button
-            className="navbar-toggler"
+            className="navbar-toggler border-0 shadow-none px-2 py-1"
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-controls="navbarContent"
@@ -107,9 +116,9 @@ export default function Navbar() {
           </button>
 
           <div className={`collapse navbar-collapse ${mobileMenuOpen ? 'show' : ''}`} id="navbarContent">
-            <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav ms-auto me-3 me-xxl-4 mb-2 mb-xl-0 align-items-xl-center">
               <li className="nav-item">
-                <Link href="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>
+                <Link href="/" className={`nav-link ${isActive('/') && pathname === '/' ? 'active' : ''}`}>
                   Home
                 </Link>
               </li>
@@ -135,33 +144,33 @@ export default function Navbar() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/products/commercial-plywood" className="dropdown-item">
-                      Commercial Plywood (IS:303 MR)
+                    <Link href="/products/marine-plywood" className="dropdown-item">
+                      <i className="bi bi-shield-fill-check text-danger me-2"></i> Marine Plywood (IS:710 BWP)
                     </Link>
                   </li>
                   <li>
                     <Link href="/products/hardwood-plywood" className="dropdown-item">
-                      Hardwood Plywood (Structural)
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/products/marine-plywood" className="dropdown-item">
-                      Marine Plywood (IS:710 BWP)
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/products/bwr-plywood" className="dropdown-item">
-                      BWR Plywood (IS:303 BWR)
+                      <i className="bi bi-layers-fill text-muted me-2"></i> Hardwood Calibrated (Structural)
                     </Link>
                   </li>
                   <li>
                     <Link href="/products/film-faced-plywood" className="dropdown-item">
-                      Film Faced Shuttering Plywood
+                      <i className="bi bi-building-fill text-muted me-2"></i> Film Faced Shuttering (IS:4990)
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/products/bwr-plywood" className="dropdown-item">
+                      <i className="bi bi-droplet-half text-muted me-2"></i> BWR Plywood (IS:303 Grade)
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/products/commercial-plywood" className="dropdown-item">
+                      <i className="bi bi-house-door text-muted me-2"></i> Commercial MR Plywood (IS:303)
                     </Link>
                   </li>
                   <li>
                     <Link href="/products/alternate-plywood" className="dropdown-item">
-                      Alternate Plywood (Multi-Core)
+                      <i className="bi bi-segmented-nav text-muted me-2"></i> Alternate Core Plywood
                     </Link>
                   </li>
                 </ul>
@@ -194,8 +203,8 @@ export default function Navbar() {
               </li>
             </ul>
 
-            <div className="nav-cta d-flex align-items-center gap-3">
-              <Link href="/contact#quote" className="btn btn-primary d-inline-flex align-items-center gap-2">
+            <div className="nav-cta d-flex align-items-center gap-2 mt-3 mt-xl-0">
+              <Link href="/contact#quote" className="btn btn-nav-quote d-inline-flex align-items-center gap-2">
                 <i className="bi bi-file-earmark-text"></i>
                 <span>Request a Quote</span>
               </Link>

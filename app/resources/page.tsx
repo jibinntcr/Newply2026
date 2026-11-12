@@ -105,62 +105,138 @@ export default function ResourcesPage() {
       <section className="section-padding bg-white border-top">
         <div className="container-xxl px-4">
           <div className="section-title text-center mb-5">
-            <span className="section-eyebrow">Material Comparison</span>
-            <h2 className="display-6">Plywood vs. MDF &amp; Particle Board</h2>
+            <span className="section-eyebrow">Material Science Comparison</span>
+            <h2 className="display-6 fw-bold">Plywood vs. MDF &amp; Particle Board</h2>
             <p className="section-subtitle">
-              Why solid hardwood cross-laminated plywood outperforms fiber and particle composites across humid climates.
+              Comprehensive technical evaluation: Why solid hardwood cross-laminated plywood outperforms fiber and particle composites across humid coastal climates.
             </p>
           </div>
 
-          <div className="table-responsive rounded border shadow-sm">
-            <table className="table table-bordered mb-0 align-middle small">
-              <thead className="table-dark">
-                <tr>
-                  <th scope="col" style={{ width: '25%' }}>Property / Benchmark</th>
-                  <th scope="col" className="text-danger fw-bold" style={{ width: '25%' }}>
-                    Newtech Calibrated Hardwood Plywood
-                  </th>
-                  <th scope="col" style={{ width: '25%' }}>MDF (Medium Density Fiberboard)</th>
-                  <th scope="col" style={{ width: '25%' }}>Particle Board / Chipboard</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row" className="bg-light">Internal Construction</th>
-                  <td className="fw-semibold text-success">Solid cross-laminated continuous hardwood veneers</td>
-                  <td>Compressed sawdust and wood fibers with glue</td>
-                  <td>Loose compressed wood chips with resin</td>
-                </tr>
-                <tr>
-                  <th scope="row" className="bg-light">Water &amp; Humidity Resistance</th>
-                  <td className="fw-semibold text-success">
-                    Excellent (72-hr boiling proof with BWP grade)
-                  </td>
-                  <td className="text-danger">Poor (swells irreversibly upon water contact)</td>
-                  <td className="text-danger">Very Poor (crumbles and sags with moisture)</td>
-                </tr>
-                <tr>
-                  <th scope="row" className="bg-light">Screw-Holding &amp; Hinge Strength</th>
-                  <td className="fw-semibold text-success">
-                    High (&gt;300 kgf on face, &gt;200 kgf on edge)
-                  </td>
-                  <td>Moderate (screws can strip after repeated adjustment)</td>
-                  <td className="text-danger">Low (screws pull out easily over time)</td>
-                </tr>
-                <tr>
-                  <th scope="row" className="bg-light">Bending &amp; Sag Resistance (MOE)</th>
-                  <td className="fw-semibold text-success">Superior span capacity without sagging</td>
-                  <td>Prone to bowing under long shelf spans</td>
-                  <td className="text-danger">Severe sagging under books and crockery</td>
-                </tr>
-                <tr>
-                  <th scope="row" className="bg-light">Durability in Kerala Climate</th>
-                  <td className="fw-semibold text-success">15 to 25+ years with lifetime borer defense</td>
-                  <td>3 to 7 years in humid coastal air</td>
-                  <td>2 to 5 years (not recommended for kitchens)</td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="comparison-table-card shadow-sm border rounded-4 overflow-hidden mb-4">
+            <div className="table-responsive mb-0">
+              <table className="comparison-table align-middle">
+                <thead>
+                  <tr>
+                    <th scope="col" style={{ width: '25%' }}>Performance Metric</th>
+                    <th scope="col" style={{ width: '31%' }} className="text-white bg-dark">
+                      <div className="d-flex align-items-center gap-2">
+                        <i className="bi bi-patch-check-fill text-warning fs-5"></i>
+                        <div>
+                          <span className="d-block text-warning fw-bold text-uppercase small tracking-wider">Top Benchmark</span>
+                          <span className="fs-6 fw-bold">Newtech Calibrated Plywood</span>
+                        </div>
+                      </div>
+                    </th>
+                    <th scope="col" style={{ width: '22%' }}>MDF (Fiberboard)</th>
+                    <th scope="col" style={{ width: '22%' }}>Particle / Chipboard</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row" className="bg-light text-dark fw-bold">Internal Construction</th>
+                    <td className="table-highlight-cell">
+                      <div className="d-flex align-items-start gap-2">
+                        <i className="bi bi-check-circle-fill text-success fs-5 flex-shrink-0 mt-1"></i>
+                        <div>
+                          <strong className="text-dark d-block">100% Solid Hardwood Core</strong>
+                          <span className="small text-secondary">Cross-laminated continuous veneers with zero internal voids</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span className="text-secondary small">Compressed fine wood sawdust &amp; fibers with synthetic binder</span>
+                    </td>
+                    <td>
+                      <span className="text-secondary small">Loose pressed wood chips and flakes with resin matrix</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="bg-light text-dark fw-bold">Water &amp; Humidity Resistance</th>
+                    <td className="table-highlight-cell">
+                      <div className="d-flex align-items-start gap-2">
+                        <i className="bi bi-shield-fill-check text-success fs-5 flex-shrink-0 mt-1"></i>
+                        <div>
+                          <strong className="text-success d-block">72-Hour Boiling Water Proof (BWP)</strong>
+                          <span className="small text-secondary">Withstands water submersion without thickness swelling or rot</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="d-flex align-items-start gap-2 text-danger">
+                        <i className="bi bi-exclamation-triangle-fill flex-shrink-0 mt-1"></i>
+                        <span className="small"><strong>Poor:</strong> Irreversible swelling &amp; softening on water contact</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="d-flex align-items-start gap-2 text-danger">
+                        <i className="bi bi-x-circle-fill flex-shrink-0 mt-1"></i>
+                        <span className="small"><strong>Extremely Poor:</strong> Crumbles and disintegrates when damp</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="bg-light text-dark fw-bold">Screw-Holding &amp; Hinge Strength</th>
+                    <td className="table-highlight-cell">
+                      <div className="d-flex align-items-start gap-2">
+                        <i className="bi bi-check-circle-fill text-success fs-5 flex-shrink-0 mt-1"></i>
+                        <div>
+                          <strong className="text-dark d-block">High Tensile Grip (&gt;300 kgf)</strong>
+                          <span className="small text-secondary">Screws anchor into dense natural grain; withstands repeat hinge opening</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span className="text-secondary small">Moderate grip; screws easily strip out if hinges are readjusted</span>
+                    </td>
+                    <td>
+                      <div className="d-flex align-items-start gap-2 text-danger">
+                        <i className="bi bi-exclamation-circle-fill flex-shrink-0 mt-1"></i>
+                        <span className="small">Low grip; screws pull out easily causing cabinet doors to sag</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="bg-light text-dark fw-bold">Bending &amp; Sag Resistance (MOE)</th>
+                    <td className="table-highlight-cell">
+                      <div className="d-flex align-items-start gap-2">
+                        <i className="bi bi-check-circle-fill text-success fs-5 flex-shrink-0 mt-1"></i>
+                        <div>
+                          <strong className="text-dark d-block">Superior Span Strength</strong>
+                          <span className="small text-secondary">Cross-directional veneer grain prevents bowing over wide book &amp; kitchen shelves</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span className="text-secondary small">Prone to continuous sagging under sustained shelf loads</span>
+                    </td>
+                    <td>
+                      <div className="d-flex align-items-start gap-2 text-danger">
+                        <i className="bi bi-exclamation-circle-fill flex-shrink-0 mt-1"></i>
+                        <span className="small">Severe permanent bowing under moderate crockery weights</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="bg-light text-dark fw-bold">Lifespan in Tropical Coastal Climate</th>
+                    <td className="table-highlight-cell">
+                      <div className="d-flex align-items-start gap-2">
+                        <i className="bi bi-award-fill text-warning fs-5 flex-shrink-0 mt-1"></i>
+                        <div>
+                          <strong className="text-dark d-block">15 to 25+ Years Service Life</strong>
+                          <span className="small text-secondary">Permanent chemical borer and termite resistance throughout the core</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span className="text-secondary small">3 to 7 years in humid air; prone to fungal attacks</span>
+                    </td>
+                    <td>
+                      <span className="text-secondary small">2 to 5 years; unsuitable for humid kitchens or vanities</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>

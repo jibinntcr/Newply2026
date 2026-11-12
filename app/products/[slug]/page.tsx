@@ -126,57 +126,82 @@ export default function ProductDetailPage({ params }: Props) {
                   <span className="badge bg-light text-secondary border">Mill Quality Lab Tested</span>
                 </div>
 
-                <div className="table-responsive bg-white rounded border shadow-sm">
-                  <table className="table table-bordered mb-0 align-middle">
-                    <tbody className="small">
-                      <tr>
-                        <th scope="row" className="bg-light text-dark fw-bold" style={{ width: '35%' }}>
-                          Grade &amp; Standard
-                        </th>
-                        <td className="fw-semibold text-danger">{product.gradeStandard}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row" className="bg-light text-dark fw-bold">
-                          Core Timber Species
-                        </th>
-                        <td>{product.coreSpecies}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row" className="bg-light text-dark fw-bold">
-                          Bonding Resin Adhesive
-                        </th>
-                        <td>{product.bondingResin}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row" className="bg-light text-dark fw-bold">
-                          Available Thicknesses
-                        </th>
-                        <td>{product.thicknesses}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row" className="bg-light text-dark fw-bold">
-                          Standard Sheet Dimensions
-                        </th>
-                        <td>{product.dimensions}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row" className="bg-light text-dark fw-bold">
-                          Equilibrium Moisture Content
-                        </th>
-                        <td>{product.moistureContent}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row" className="bg-light text-dark fw-bold">
-                          Surface Calibration
-                        </th>
-                        <td>{product.faceFinish}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row" className="bg-light text-dark fw-bold">
-                          Screw &amp; Fastener Holding
-                        </th>
-                        <td>{product.screwHolding}</td>
-                      </tr>
+                <div className="comparison-table-card rounded-4 border shadow-sm overflow-hidden mb-4">
+                  <div className="table-responsive mb-0">
+                    <table className="table-specs mb-0 align-middle">
+                      <tbody>
+                        <tr>
+                          <th scope="row">
+                            <div className="d-flex align-items-center gap-2">
+                              <i className="bi bi-patch-check-fill text-danger"></i>
+                              <span>Grade &amp; Standard</span>
+                            </div>
+                          </th>
+                          <td className="fw-bold text-danger fs-6">{product.gradeStandard}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <div className="d-flex align-items-center gap-2">
+                              <i className="bi bi-tree-fill text-secondary"></i>
+                              <span>Core Timber Species</span>
+                            </div>
+                          </th>
+                          <td className="text-dark fw-semibold">{product.coreSpecies}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <div className="d-flex align-items-center gap-2">
+                              <i className="bi bi-droplet-half text-secondary"></i>
+                              <span>Bonding Resin Adhesive</span>
+                            </div>
+                          </th>
+                          <td className="text-dark">{product.bondingResin}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <div className="d-flex align-items-center gap-2">
+                              <i className="bi bi-layers-fill text-secondary"></i>
+                              <span>Available Thicknesses</span>
+                            </div>
+                          </th>
+                          <td className="text-dark fw-semibold">{product.thicknesses}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <div className="d-flex align-items-center gap-2">
+                              <i className="bi bi-aspect-ratio text-secondary"></i>
+                              <span>Standard Sheet Dimensions</span>
+                            </div>
+                          </th>
+                          <td className="text-dark">{product.dimensions}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <div className="d-flex align-items-center gap-2">
+                              <i className="bi bi-water text-secondary"></i>
+                              <span>Equilibrium Moisture Content</span>
+                            </div>
+                          </th>
+                          <td className="text-dark">{product.moistureContent}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <div className="d-flex align-items-center gap-2">
+                              <i className="bi bi-slash-square text-secondary"></i>
+                              <span>Surface Calibration</span>
+                            </div>
+                          </th>
+                          <td className="text-dark">{product.faceFinish}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <div className="d-flex align-items-center gap-2">
+                              <i className="bi bi-pin-angle text-secondary"></i>
+                              <span>Screw &amp; Fastener Holding</span>
+                            </div>
+                          </th>
+                          <td className="text-dark">{product.screwHolding}</td>
+                        </tr>
                       <tr>
                         <th scope="row" className="bg-light text-dark fw-bold">
                           Boiling / Moisture Resistance
