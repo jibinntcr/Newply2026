@@ -38,7 +38,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet"/>
 
   <!-- Custom Stylesheet -->
-  <link href="css/style.css?v=2.2" rel="stylesheet"/>
+  <link href="css/style.css?v=2.3" rel="stylesheet"/>
 
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
@@ -291,6 +291,70 @@
       }
       .team-exec-btn-grid {
         grid-template-columns: 1fr;
+      }
+    }
+      .team-quick-float {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .team-exec-card:hover .team-quick-float {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .team-quick-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      color: #1f2421;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      transition: all 0.22s ease;
+      text-decoration: none;
+    }
+    .team-quick-icon:hover {
+      transform: scale(1.15);
+      background: #ffffff;
+      color: #C7202B;
+    }
+    .team-quick-icon.wa:hover {
+      background: #25D366;
+      color: #ffffff;
+    }
+    .team-quick-icon.mail:hover {
+      background: #1f2421;
+      color: #ffffff;
+    }
+    @media (max-width: 767.98px) {
+      .team-quick-float {
+        display: none !important;
+      }
+      .team-exec-img-wrap {
+        height: 270px;
+      }
+      .team-exec-body {
+        padding: 1.25rem 1.15rem 1rem;
+      }
+      .team-exec-chips {
+        gap: 0.35rem;
+      }
+      .team-exec-chip {
+        font-size: 0.72rem;
+        padding: 0.25rem 0.55rem;
       }
     }
   </style>
@@ -1317,91 +1381,128 @@
         </div>
 
         <div class="row g-4 justify-content-center">
-          <!-- Leader 1: Muneer K H -->
-          <div class="col-md-6 col-lg-4">
-            <div class="team-exec-card">
-              <div class="team-exec-img-wrap">
-                <img src="img/team-1.jpg" alt="Muneer K H - Managing Partner" class="team-exec-img" width="400" height="290" loading="lazy"/>
-                <div class="team-exec-gradient"></div>
-                <div class="team-exec-badges">
-                  <div class="team-exec-status" title="Active on site at Perumbavoor Plant">
-                    <span class="status-dot"></span> Plant Active
-                  </div>
-                  <div class="team-exec-dept">Operations</div>
+                  <!-- Leader 1: Muneer K H -->
+        <div class="col-md-6 col-lg-4">
+          <div class="team-exec-card">
+            <div class="team-exec-img-wrap">
+              <img src="img/team-1.jpg" alt="Muneer K H - Managing Partner" class="team-exec-img" width="400" height="310" loading="lazy"/>
+              <div class="team-exec-gradient"></div>
+              <div class="team-exec-badges">
+                <div class="team-exec-status" title="Active on site at Perumbavoor Plant">
+                  <span class="status-dot"></span> Plant Active
                 </div>
+                <div class="team-exec-dept">Operations</div>
               </div>
-              <div class="team-exec-body">
-                <h3 class="team-exec-name">Muneer K H</h3>
-                <div><span class="team-exec-role">Managing Partner</span></div>
-                <p class="team-exec-bio">Directs mill operations, timber procurement, raw material quality control, and production scheduling at our Perumbavoor manufacturing facility.</p>
-                <div class="team-exec-chips">
-                  <span class="team-exec-chip"><i class="bi bi-tree me-1 text-danger"></i>Timber Sourcing</span>
-                  <span class="team-exec-chip"><i class="bi bi-gear-wide-connected me-1 text-danger"></i>Hot-Press Ops</span>
-                  <span class="team-exec-chip"><i class="bi bi-patch-check me-1 text-danger"></i>IS:710 Compliance</span>
-                </div>
+              <div class="team-quick-float">
+                <a href="tel:+919745450618" class="team-quick-icon" title="Call Muneer"><i class="bi bi-telephone-fill"></i></a>
+                <a href="https://wa.me/919745450618?text=Hello%20Muneer%2C%20I%20would%20like%20to%20discuss%20plywood%20manufacturing%20specifications." target="_blank" rel="noopener noreferrer" class="team-quick-icon wa" title="WhatsApp Muneer"><i class="bi bi-whatsapp"></i></a>
+                <a href="mailto:newtechply@gmail.com" class="team-quick-icon mail" title="Email Muneer"><i class="bi bi-envelope-fill"></i></a>
               </div>
-              <div class="team-exec-footer">
-                <div class="team-exec-btn-grid">
-                  <a href="tel:+919745450618" class="team-exec-btn-call">
-                    <i class="bi bi-telephone-fill text-danger"></i> Call
-                  </a>
-                  <a href="https://wa.me/919745450618?text=Hello%20Muneer%2C%20I%20would%20like%20to%20discuss%20plywood%20manufacturing%20specifications." target="_blank" rel="noopener noreferrer" class="team-exec-btn-wa">
-                    <i class="bi bi-whatsapp"></i> WhatsApp
-                  </a>
-                </div>
+            </div>
+            <div class="team-exec-body">
+              <h3 class="team-exec-name">Muneer K H</h3>
+              <div><span class="team-exec-role">Managing Partner</span></div>
+              <p class="team-exec-bio">Directs mill operations, timber procurement, raw material quality control, and production scheduling at our Perumbavoor manufacturing facility.</p>
+              <div class="team-exec-chips">
+                <span class="team-exec-chip"><i class="bi bi-tree me-1 text-danger"></i>Timber Sourcing</span>
+                <span class="team-exec-chip"><i class="bi bi-gear-wide-connected me-1 text-danger"></i>Hot-Press Ops</span>
+                <span class="team-exec-chip"><i class="bi bi-patch-check me-1 text-danger"></i>IS:710 Compliance</span>
+              </div>
+            </div>
+            <div class="team-exec-footer">
+              <div class="team-exec-btn-grid">
+                <a href="tel:+919745450618" class="team-exec-btn-call">
+                  <i class="bi bi-telephone-fill text-danger me-1"></i> Call
+                </a>
+                <a href="https://wa.me/919745450618?text=Hello%20Muneer%2C%20I%20would%20like%20to%20discuss%20plywood%20manufacturing%20specifications." target="_blank" rel="noopener noreferrer" class="team-exec-btn-wa">
+                  <i class="bi bi-whatsapp me-1"></i> WhatsApp
+                </a>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Leader 2: Mahin K.H -->
-          <div class="col-md-6 col-lg-4">
-            <div class="team-exec-card">
-              <div class="team-exec-img-wrap">
-                <img src="img/team-3.jpg" alt="Mahin K.H - Head of Sales & Business Development" class="team-exec-img" width="400" height="290" loading="lazy"/>
-                <div class="team-exec-gradient"></div>
-                <div class="team-exec-badges">
-                  <div class="team-exec-status" title="Active Commercial Sales Desk">
-                    <span class="status-dot"></span> Sales Desk
-                  </div>
-                  <div class="team-exec-dept">Commercial</div>
+        <!-- Leader 2: Mahin K.H -->
+        <div class="col-md-6 col-lg-4">
+          <div class="team-exec-card">
+            <div class="team-exec-img-wrap">
+              <img src="img/team-3.jpg" alt="Mahin K.H - Head of Sales & Business Development" class="team-exec-img" width="400" height="310" loading="lazy"/>
+              <div class="team-exec-gradient"></div>
+              <div class="team-exec-badges">
+                <div class="team-exec-status" title="Active Commercial Sales Desk">
+                  <span class="status-dot"></span> Sales Desk
                 </div>
+                <div class="team-exec-dept">Commercial</div>
               </div>
-              <div class="team-exec-body">
-                <h3 class="team-exec-name">Mahin K.H</h3>
-                <div><span class="team-exec-role">Head of Sales &amp; Business Dev</span></div>
-                <p class="team-exec-bio">Leads institutional sales, contractor relationships, architectural specifications, dealer distribution, and commercial wholesale quotations.</p>
-                <div class="team-exec-chips">
-                  <span class="team-exec-chip"><i class="bi bi-building me-1 text-danger"></i>Institutional Tenders</span>
-                  <span class="team-exec-chip"><i class="bi bi-rulers me-1 text-danger"></i>Architectural Specs</span>
-                  <span class="team-exec-chip"><i class="bi bi-cash-stack me-1 text-danger"></i>Wholesale Quotes</span>
-                </div>
+              <div class="team-quick-float">
+                <a href="tel:+919526029853" class="team-quick-icon" title="Call Mahin"><i class="bi bi-telephone-fill"></i></a>
+                <a href="https://wa.me/919526029853?text=Hello%20Mahin%2C%20I%20would%20like%20to%20request%20a%20commercial%20plywood%20quotation." target="_blank" rel="noopener noreferrer" class="team-quick-icon wa" title="WhatsApp Mahin"><i class="bi bi-whatsapp"></i></a>
+                <a href="mailto:newtechply@gmail.com" class="team-quick-icon mail" title="Email Mahin"><i class="bi bi-envelope-fill"></i></a>
               </div>
-              <div class="team-exec-footer">
-                <div class="team-exec-btn-grid">
-                  <a href="tel:+919526029853" class="team-exec-btn-call">
-                    <i class="bi bi-telephone-fill text-danger"></i> Call
-                  </a>
-                  <a href="https://wa.me/919526029853?text=Hello%20Mahin%2C%20I%20would%20like%20to%20request%20a%20commercial%20plywood%20quotation." target="_blank" rel="noopener noreferrer" class="team-exec-btn-wa">
-                    <i class="bi bi-whatsapp"></i> WhatsApp
-                  </a>
-                </div>
+            </div>
+            <div class="team-exec-body">
+              <h3 class="team-exec-name">Mahin K.H</h3>
+              <div><span class="team-exec-role">Head of Sales &amp; Business Dev</span></div>
+              <p class="team-exec-bio">Leads institutional sales, contractor relationships, architectural specifications, dealer distribution, and commercial wholesale quotations.</p>
+              <div class="team-exec-chips">
+                <span class="team-exec-chip"><i class="bi bi-building me-1 text-danger"></i>Institutional Tenders</span>
+                <span class="team-exec-chip"><i class="bi bi-rulers me-1 text-danger"></i>Architectural Specs</span>
+                <span class="team-exec-chip"><i class="bi bi-cash-stack me-1 text-danger"></i>Wholesale Quotes</span>
+              </div>
+            </div>
+            <div class="team-exec-footer">
+              <div class="team-exec-btn-grid">
+                <a href="tel:+919526029853" class="team-exec-btn-call">
+                  <i class="bi bi-telephone-fill text-danger me-1"></i> Call
+                </a>
+                <a href="https://wa.me/919526029853?text=Hello%20Mahin%2C%20I%20would%20like%20to%20request%20a%20commercial%20plywood%20quotation." target="_blank" rel="noopener noreferrer" class="team-exec-btn-wa">
+                  <i class="bi bi-whatsapp me-1"></i> WhatsApp
+                </a>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Leader 3: Muhsin -->
-          <div class="col-md-6 col-lg-4">
-            <div class="team-exec-card">
-              <div class="team-exec-img-wrap">
-                <img src="img/team-2.jpg" alt="Muhsin - Customer Relations & Dispatch Logistics" class="team-exec-img" width="400" height="290" loading="lazy"/>
-                <div class="team-exec-gradient"></div>
-                <div class="team-exec-badges">
-                  <div class="team-exec-status" title="Active Order & Logistics Desk">
-                    <span class="status-dot"></span> Dispatch Active
-                  </div>
-                  <div class="team-exec-dept">Logistics</div>
+        <!-- Leader 3: Muhsin -->
+        <div class="col-md-6 col-lg-4">
+          <div class="team-exec-card">
+            <div class="team-exec-img-wrap">
+              <img src="img/team-2.jpg" alt="Muhsin - Customer Relations & Dispatch Logistics" class="team-exec-img" width="400" height="310" loading="lazy"/>
+              <div class="team-exec-gradient"></div>
+              <div class="team-exec-badges">
+                <div class="team-exec-status" title="Active Order & Logistics Desk">
+                  <span class="status-dot"></span> Dispatch Active
                 </div>
+                <div class="team-exec-dept">Logistics</div>
               </div>
+              <div class="team-quick-float">
+                <a href="tel:+919745450618" class="team-quick-icon" title="Call Muhsin"><i class="bi bi-telephone-fill"></i></a>
+                <a href="https://wa.me/919745450618?text=Hello%20Muhsin%2C%20I%20would%20like%20to%20check%20an%20order%20dispatch%20status." target="_blank" rel="noopener noreferrer" class="team-quick-icon wa" title="WhatsApp Muhsin"><i class="bi bi-whatsapp"></i></a>
+                <a href="mailto:newtechply@gmail.com" class="team-quick-icon mail" title="Email Muhsin"><i class="bi bi-envelope-fill"></i></a>
+              </div>
+            </div>
+            <div class="team-exec-body">
+              <h3 class="team-exec-name">Muhsin</h3>
+              <div><span class="team-exec-role">Customer Relations &amp; Dispatch</span></div>
+              <p class="team-exec-bio">Coordinates dispatch schedules, transport fleets, live order tracking, and client after-sales support to ensure punctual on-site delivery.</p>
+              <div class="team-exec-chips">
+                <span class="team-exec-chip"><i class="bi bi-truck me-1 text-danger"></i>Fleet Logistics</span>
+                <span class="team-exec-chip"><i class="bi bi-geo-alt me-1 text-danger"></i>Site Delivery</span>
+                <span class="team-exec-chip"><i class="bi bi-headset me-1 text-danger"></i>Client Support</span>
+              </div>
+            </div>
+            <div class="team-exec-footer">
+              <div class="team-exec-btn-grid">
+                <a href="tel:+919745450618" class="team-exec-btn-call">
+                  <i class="bi bi-telephone-fill text-danger me-1"></i> Call
+                </a>
+                <a href="https://wa.me/919745450618?text=Hello%20Muhsin%2C%20I%20would%20like%20to%20check%20an%20order%20dispatch%20status." target="_blank" rel="noopener noreferrer" class="team-exec-btn-wa">
+                  <i class="bi bi-whatsapp me-1"></i> WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
               <div class="team-exec-body">
                 <h3 class="team-exec-name">Muhsin</h3>
                 <div><span class="team-exec-role">Customer Relations &amp; Dispatch</span></div>

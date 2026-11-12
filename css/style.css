@@ -1766,3 +1766,75 @@ textarea:focus-visible {
         grid-template-columns: 1fr;
     }
 }
+
+
+.team-quick-float {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.team-exec-card:hover .team-quick-float {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.team-quick-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    color: #1f2421;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    transition: all 0.22s ease;
+    text-decoration: none;
+}
+
+.team-quick-icon:hover {
+    transform: scale(1.15);
+    background: #ffffff;
+    color: var(--brand-red);
+}
+
+.team-quick-icon.wa:hover {
+    background: #25D366;
+    color: #ffffff;
+}
+
+.team-quick-icon.mail:hover {
+    background: #1f2421;
+    color: #ffffff;
+}
+
+@media (max-width: 767.98px) {
+    .team-quick-float {
+        display: none !important;
+    }
+    .team-exec-img-wrap {
+        height: 270px;
+    }
+    .team-exec-body {
+        padding: 1.25rem 1.15rem 1rem;
+    }
+    .team-exec-chips {
+        gap: 0.35rem;
+    }
+    .team-exec-chip {
+        font-size: 0.72rem;
+        padding: 0.25rem 0.55rem;
+    }
+}
