@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage() {
         </div>
       </section>
 
-      <main className="section-padding bg-warm">
+      <section className="section-padding bg-warm">
         <div className="container-xxl px-4">
           <div className="row justify-content-center">
             <div className="col-lg-10">
@@ -87,7 +87,7 @@ export default function PrivacyPolicyPage() {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 }

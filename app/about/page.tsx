@@ -25,7 +25,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="col-lg-4 text-lg-end mt-4 mt-lg-0">
-              <Link href="/contact" className="btn btn-primary btn-lg">
+              <Link href="/contact" className="btn btn-brand-primary btn-lg">
                 <i className="bi bi-geo-alt-fill me-2"></i> Visit Our Perumbavoor Plant
               </Link>
             </div>

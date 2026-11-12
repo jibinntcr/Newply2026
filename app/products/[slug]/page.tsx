@@ -71,7 +71,7 @@ export default function ProductDetailPage({ params }: Props) {
               <p className="lead text-white-50 mb-0">{product.heroDesc}</p>
             </div>
             <div className="col-lg-4 text-lg-end">
-              <a href="#product-quote" className="btn btn-primary btn-lg">
+              <a href="#product-quote" className="btn btn-brand-primary btn-lg">
                 <i className="bi bi-file-earmark-text me-2"></i> Request Specification Quote
               </a>
             </div>
@@ -80,7 +80,7 @@ export default function ProductDetailPage({ params }: Props) {
       </section>
 
       {/* Main Content & Specs */}
-      <main className="section-padding bg-warm" id="main-content">
+      <section className="section-padding bg-warm">
         <div className="container-xxl px-4">
           <div className="row g-5">
             {/* Left Column: Specs & Details */}
@@ -314,7 +314,7 @@ export default function ProductDetailPage({ params }: Props) {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 }

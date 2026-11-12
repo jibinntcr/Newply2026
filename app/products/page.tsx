@@ -26,7 +26,7 @@ export default function ProductsPage() {
               </p>
             </div>
             <div className="col-lg-4 text-lg-end mt-4 mt-lg-0">
-              <Link href="/contact#quote-form" className="btn btn-primary btn-lg">
+              <Link href="/contact#quote-form" className="btn btn-brand-primary btn-lg">
                 <i className="bi bi-file-earmark-text me-2"></i> Request Wholesale Quote
               </Link>
             </div>
