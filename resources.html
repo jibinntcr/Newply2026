@@ -109,61 +109,121 @@
         <h2 class="h3 mb-3">Indian Standards (IS) Grade Comparison Matrix</h2>
         <p class="text-secondary mb-4">Different project environments require specific adhesive chemistry. Use this matrix to match your application with the proper Bureau of Indian Standards classification.</p>
 
-        <div class="table-responsive">
-          <table class="table-specs">
-            <thead>
-              <tr>
-                <th scope="col">Grade</th>
-                <th scope="col">Official IS Standard</th>
-                <th scope="col">Resin Type</th>
-                <th scope="col">Boiling Water Test</th>
-                <th scope="col">Exposure Environment</th>
-                <th scope="col">Recommended Applications</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Commercial (MR)</strong></td>
-                <td>IS:303 (MR)</td>
-                <td>Urea Formaldehyde (Amino Resin)</td>
-                <td>Not boil-proof (moisture resistant only)</td>
-                <td>Dry interior spaces with controlled humidity</td>
-                <td>Wardrobes, living room cabinetry, paneling</td>
-              </tr>
-              <tr>
-                <td><strong>BWR Plywood</strong></td>
-                <td>IS:303 (BWR)</td>
-                <td>Phenol Formaldehyde Resin</td>
-                <td>8 hours continuous boiling water</td>
-                <td>Intermittent moisture and steam exposure</td>
-                <td>Kitchen wall units, doors, balcony units</td>
-              </tr>
-              <tr>
-                <td><strong>Marine Plywood</strong></td>
-                <td>IS:710 (BWP)</td>
-                <td>100% Unextended Phenolic Resin</td>
-                <td>72+ hours continuous boiling water</td>
-                <td>Prolonged water contact, high humidity, maritime</td>
-                <td>Bathroom vanities, under-sink units, boats</td>
-              </tr>
-              <tr>
-                <td><strong>Film Faced Shuttering</strong></td>
-                <td>High-Cycle Formwork</td>
-                <td>Phenolic Bonded + 120 GSM Film</td>
-                <td>Waterproof &amp; alkaline concrete resistant</td>
-                <td>Direct wet concrete contact &amp; outdoor casting</td>
-                <td>Concrete slabs, columns, beams, bridge decks</td>
-              </tr>
-              <tr>
-                <td><strong>Hardwood Structural</strong></td>
-                <td>Heavy Duty Grade</td>
-                <td>Fortified Polymeric Resin</td>
-                <td>High water and weather endurance</td>
-                <td>Severe mechanical point loading and vibration</td>
-                <td>Container floors, bus bodies, mezzanine floors</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- Comparison Table Filter & Card -->
+        <div class="table-filter-bar" role="tablist" aria-label="Filter grade matrix">
+          <button type="button" class="table-filter-btn active" data-filter="all">All Grades</button>
+          <button type="button" class="table-filter-btn" data-filter="waterproof"><i class="bi bi-shield-check me-1 text-success"></i> Waterproof &amp; Marine (IS:710 / BWR)</button>
+          <button type="button" class="table-filter-btn" data-filter="interior"><i class="bi bi-house-door me-1 text-warning"></i> Interior &amp; Furniture (MR)</button>
+          <button type="button" class="table-filter-btn" data-filter="structural"><i class="bi bi-hammer me-1 text-primary"></i> Heavy Structural &amp; Formwork</button>
+        </div>
+
+        <div class="table-scroll-hint">
+          <i class="bi bi-arrows-left-right me-1"></i> Swipe horizontally to view full technical parameters
+        </div>
+
+        <div class="comparison-table-card mb-4">
+          <div class="table-responsive mb-0">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th scope="col" style="width: 22%;">Plywood Grade</th>
+                  <th scope="col" style="width: 14%;">Official Standard</th>
+                  <th scope="col" style="width: 18%;">Resin Type</th>
+                  <th scope="col" style="width: 22%;">Boiling Water Test</th>
+                  <th scope="col" style="width: 24%;">Recommended Applications</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Marine Plywood (Flagship) -->
+                <tr class="row-featured" data-category="waterproof">
+                  <td>
+                    <div class="d-flex flex-column align-items-start gap-1">
+                      <span class="badge-flagship"><i class="bi bi-star-fill text-warning me-1"></i> Flagship Grade</span>
+                      <strong class="badge-grade-title">Marine Plywood</strong>
+                      <small class="text-muted">BWP 100% Waterproof</small>
+                    </div>
+                  </td>
+                  <td><span class="badge-code-pill is710">IS:710 (BWP)</span></td>
+                  <td><strong>100% Unextended Phenolic Resin</strong><br/><small class="text-muted">Superior molecular bond</small></td>
+                  <td>
+                    <div class="badge-water-res waterproof">
+                      <i class="bi bi-shield-fill-check fs-5"></i>
+                      <span>72+ Hrs Boiling Proof<br/><small class="text-muted fw-normal">Zero ply delamination</small></span>
+                    </div>
+                  </td>
+                  <td>Bathroom vanities, under-sink units, naval crafts, coastal architecture</td>
+                </tr>
+
+                <!-- BWR Plywood -->
+                <tr data-category="waterproof">
+                  <td>
+                    <strong class="badge-grade-title">BWR Plywood</strong>
+                    <small class="text-muted">Boiling Water Resistant</small>
+                  </td>
+                  <td><span class="badge-code-pill is303">IS:303 (BWR)</span></td>
+                  <td><strong>Phenol Formaldehyde Resin</strong><br/><small class="text-muted">Exterior synthetic adhesive</small></td>
+                  <td>
+                    <div class="badge-water-res waterproof">
+                      <i class="bi bi-droplet-half fs-5 text-primary"></i>
+                      <span>8 Hrs Boiling Resistant<br/><small class="text-muted fw-normal">Steam &amp; moisture resilient</small></span>
+                    </div>
+                  </td>
+                  <td>Kitchen wall units, doors, balcony cabinets, dining furniture</td>
+                </tr>
+
+                <!-- Commercial Plywood (MR) -->
+                <tr data-category="interior">
+                  <td>
+                    <strong class="badge-grade-title">Commercial (MR)</strong>
+                    <small class="text-muted">Moisture Resistant Standard</small>
+                  </td>
+                  <td><span class="badge-code-pill is303">IS:303 (MR)</span></td>
+                  <td><strong>Urea Formaldehyde (Amino Resin)</strong><br/><small class="text-muted">High tack interior adhesive</small></td>
+                  <td>
+                    <div class="badge-water-res interior">
+                      <i class="bi bi-house-check fs-5 text-secondary"></i>
+                      <span>Moisture Resistant<br/><small class="text-muted fw-normal">Controlled indoor dry climate</small></span>
+                    </div>
+                  </td>
+                  <td>Wardrobes, living room cabinetry, paneling, bedroom furniture</td>
+                </tr>
+
+                <!-- Hardwood Structural -->
+                <tr data-category="structural">
+                  <td>
+                    <strong class="badge-grade-title">Hardwood Structural</strong>
+                    <small class="text-muted">Heavy Duty Calibrated</small>
+                  </td>
+                  <td><span class="badge-code-pill heavy">Heavy Duty Grade</span></td>
+                  <td><strong>Fortified Polymeric Resin</strong><br/><small class="text-muted">High impact polymer matrix</small></td>
+                  <td>
+                    <div class="badge-water-res waterproof">
+                      <i class="bi bi-shield-check fs-5 text-success"></i>
+                      <span>High Water &amp; Weather Endurance<br/><small class="text-muted fw-normal">Severe load bearing</small></span>
+                    </div>
+                  </td>
+                  <td>Freight container floors, bus &amp; truck bodies, industrial mezzanine platforms</td>
+                </tr>
+
+                <!-- Film Faced Shuttering -->
+                <tr data-category="structural">
+                  <td>
+                    <strong class="badge-grade-title">Film Faced Shuttering</strong>
+                    <small class="text-muted">Formwork Specification</small>
+                  </td>
+                  <td><span class="badge-code-pill formwork">High-Cycle Formwork</span></td>
+                  <td><strong>Phenolic Bonded + 120 GSM Film</strong><br/><small class="text-muted">Mirror-smooth non-stick surface</small></td>
+                  <td>
+                    <div class="badge-water-res waterproof">
+                      <i class="bi bi-water fs-5 text-info"></i>
+                      <span>100% Concrete Waterproof<br/><small class="text-muted fw-normal">Direct slurry &amp; chemical resistance</small></span>
+                    </div>
+                  </td>
+                  <td>Concrete casting, bridge decks, structural columns, beams, high repetition formwork</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
@@ -364,7 +424,7 @@
       <div class="footer-bottom text-center">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
           <span>&copy; 2026 Newtech Ply &amp; Boards. All Rights Reserved.</span>
-          <span>Website modernization by <a href="https://infinio.co.in/" target="_blank" rel="noopener noreferrer">Infinio Technology Solutions</a>.</span>
+          <span>Website Designed &amp; Developed by <a href="https://infinio.co.in/" target="_blank" rel="noopener noreferrer">Infinio Technology Solutions</a></span>
         </div>
       </div>
     </div>

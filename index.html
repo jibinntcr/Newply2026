@@ -871,63 +871,157 @@
           <p class="section-subtitle">Direct comparison to help architects, contractors, and project managers choose the correct specifications.</p>
         </div>
 
-        <!-- Comparison Table -->
-        <div class="table-responsive mb-5">
-          <table class="table-specs">
-            <thead>
-              <tr>
-                <th scope="col">Plywood Grade</th>
-                <th scope="col">Standard / Code</th>
-                <th scope="col">Resin &amp; Bonding</th>
-                <th scope="col">Moisture / Water Tolerance</th>
-                <th scope="col">Primary Applications</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Commercial (MR)</strong></td>
-                <td>IS:303 (MR)</td>
-                <td>Urea Formaldehyde</td>
-                <td>Moisture resistant in dry indoor environments</td>
-                <td>Wardrobes, living room cabinets, false ceiling</td>
-              </tr>
-              <tr>
-                <td><strong>Hardwood Structural</strong></td>
-                <td>Heavy Density Specs</td>
-                <td>Fortified Phenolic Resin</td>
-                <td>High impact and heavy loading resilience</td>
-                <td>Bus bodies, container flooring, mezzanine decks</td>
-              </tr>
-              <tr>
-                <td><strong>BWR Plywood</strong></td>
-                <td>IS:303 (BWR)</td>
-                <td>Phenol Formaldehyde</td>
-                <td>Resists 8 hrs boiling water without ply separation</td>
-                <td>Kitchen cabinets, vanity units, balcony doors</td>
-              </tr>
-              <tr>
-                <td><strong>Marine Plywood</strong></td>
-                <td>IS:710 (BWP)</td>
-                <td>100% Unextended Phenolic</td>
-                <td>Withstands 72+ hrs continuous boiling water</td>
-                <td>Bathroom interiors, modular kitchens, coastal use</td>
-              </tr>
-              <tr>
-                <td><strong>Film Faced Shuttering</strong></td>
-                <td>High Repetition Shuttering</td>
-                <td>120 GSM Phenolic Film</td>
-                <td>High alkali concrete resistance and waterproof</td>
-                <td>Concrete slabs, columns, beams, bridge formwork</td>
-              </tr>
-              <tr>
-                <td><strong>Alternate Plywood</strong></td>
-                <td>Engineered Composite</td>
-                <td>High-tack synthetic resin</td>
-                <td>Balanced indoor &amp; semi-exterior stability</td>
-                <td>Modular panelling, office partitions, work desks</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- Comparison Table Filter & Card -->
+        <div class="table-filter-bar" role="tablist" aria-label="Filter plywood grades">
+          <button type="button" class="table-filter-btn active" data-filter="all">All Grades</button>
+          <button type="button" class="table-filter-btn" data-filter="waterproof"><i class="bi bi-shield-check me-1 text-success"></i> Waterproof &amp; Marine (IS:710 / BWR)</button>
+          <button type="button" class="table-filter-btn" data-filter="interior"><i class="bi bi-house-door me-1 text-warning"></i> Interior &amp; Furniture (MR / Alternate)</button>
+          <button type="button" class="table-filter-btn" data-filter="structural"><i class="bi bi-hammer me-1 text-primary"></i> Heavy Structural &amp; Formwork</button>
+        </div>
+
+        <div class="table-scroll-hint">
+          <i class="bi bi-arrows-left-right me-1"></i> Swipe horizontally to view full technical parameters
+        </div>
+
+        <div class="comparison-table-card mb-5">
+          <div class="table-responsive mb-0">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th scope="col" style="width: 23%;">Plywood Grade</th>
+                  <th scope="col" style="width: 14%;">Standard / Code</th>
+                  <th scope="col" style="width: 18%;">Resin &amp; Bonding</th>
+                  <th scope="col" style="width: 22%;">Moisture &amp; Water Resistance</th>
+                  <th scope="col" style="width: 23%;">Recommended Applications</th>
+                  <th scope="col" style="width: 10%; text-align: center;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Marine Plywood (Flagship IS:710) -->
+                <tr class="row-featured" data-category="waterproof">
+                  <td>
+                    <div class="d-flex flex-column align-items-start gap-1">
+                      <span class="badge-flagship"><i class="bi bi-star-fill text-warning me-1"></i> Flagship Grade</span>
+                      <strong class="badge-grade-title">Marine Plywood</strong>
+                      <small class="text-muted">BWP 100% Waterproof</small>
+                    </div>
+                  </td>
+                  <td><span class="badge-code-pill is710">IS:710 (BWP)</span></td>
+                  <td><strong>100% Unextended Phenolic</strong><br/><small class="text-muted">Pure cross-linked PF resin</small></td>
+                  <td>
+                    <div class="badge-water-res waterproof">
+                      <i class="bi bi-shield-fill-check fs-5"></i>
+                      <span>72+ Hrs Boiling Proof<br/><small class="text-muted fw-normal">Zero delamination guaranteed</small></span>
+                    </div>
+                  </td>
+                  <td>Bathroom vanities, modular kitchens, marine craft, external ducts &amp; coastal buildings</td>
+                  <td class="text-center">
+                    <a href="products/marine-plywood.html" class="table-action-link">View Specs <i class="bi bi-arrow-right"></i></a>
+                  </td>
+                </tr>
+
+                <!-- BWR Plywood -->
+                <tr data-category="waterproof">
+                  <td>
+                    <strong class="badge-grade-title">BWR Plywood</strong>
+                    <small class="text-muted">Boiling Water Resistant</small>
+                  </td>
+                  <td><span class="badge-code-pill is303">IS:303 (BWR)</span></td>
+                  <td><strong>Phenol Formaldehyde Resin</strong><br/><small class="text-muted">Exterior synthetic adhesive</small></td>
+                  <td>
+                    <div class="badge-water-res waterproof">
+                      <i class="bi bi-droplet-half fs-5 text-primary"></i>
+                      <span>8 Hrs Boiling Resistant<br/><small class="text-muted fw-normal">Steam &amp; moisture resilient</small></span>
+                    </div>
+                  </td>
+                  <td>Modular kitchen cabinets, balcony doors, dining furniture, semi-exterior panels</td>
+                  <td class="text-center">
+                    <a href="products/bwr-plywood.html" class="table-action-link">View Specs <i class="bi bi-arrow-right"></i></a>
+                  </td>
+                </tr>
+
+                <!-- Commercial Plywood (MR) -->
+                <tr data-category="interior">
+                  <td>
+                    <strong class="badge-grade-title">Commercial (MR)</strong>
+                    <small class="text-muted">Moisture Resistant Standard</small>
+                  </td>
+                  <td><span class="badge-code-pill is303">IS:303 (MR)</span></td>
+                  <td><strong>Urea Formaldehyde</strong><br/><small class="text-muted">High tack amino resin</small></td>
+                  <td>
+                    <div class="badge-water-res interior">
+                      <i class="bi bi-house-check fs-5 text-secondary"></i>
+                      <span>Moisture Resistant<br/><small class="text-muted fw-normal">Indoor dry climate use</small></span>
+                    </div>
+                  </td>
+                  <td>Bedroom wardrobes, living room wall units, bookshelves, office cabinetry, partitions</td>
+                  <td class="text-center">
+                    <a href="products/commercial-plywood.html" class="table-action-link">View Specs <i class="bi bi-arrow-right"></i></a>
+                  </td>
+                </tr>
+
+                <!-- Hardwood Structural -->
+                <tr data-category="structural">
+                  <td>
+                    <strong class="badge-grade-title">Hardwood Structural</strong>
+                    <small class="text-muted">High-Density Timber Core</small>
+                  </td>
+                  <td><span class="badge-code-pill heavy">Heavy-Duty Calibrated</span></td>
+                  <td><strong>Fortified Phenolic Resin</strong><br/><small class="text-muted">High tensile bonding matrix</small></td>
+                  <td>
+                    <div class="badge-water-res waterproof">
+                      <i class="bi bi-shield-check fs-5 text-success"></i>
+                      <span>High Impact &amp; Weatherproof<br/><small class="text-muted fw-normal">Immense load endurance</small></span>
+                    </div>
+                  </td>
+                  <td>Freight container flooring, bus &amp; truck bodies, industrial mezzanine decks, stage platforms</td>
+                  <td class="text-center">
+                    <a href="products/hardwood-plywood.html" class="table-action-link">View Specs <i class="bi bi-arrow-right"></i></a>
+                  </td>
+                </tr>
+
+                <!-- Film Faced Shuttering -->
+                <tr data-category="structural">
+                  <td>
+                    <strong class="badge-grade-title">Film Faced Shuttering</strong>
+                    <small class="text-muted">Concrete Formwork Grade</small>
+                  </td>
+                  <td><span class="badge-code-pill formwork">Formwork Specification</span></td>
+                  <td><strong>120 GSM Phenolic Overlay</strong><br/><small class="text-muted">Mirror-smooth protective film</small></td>
+                  <td>
+                    <div class="badge-water-res waterproof">
+                      <i class="bi bi-water fs-5 text-info"></i>
+                      <span>100% Concrete Waterproof<br/><small class="text-muted fw-normal">Withstands slurry &amp; alkalis</small></span>
+                    </div>
+                  </td>
+                  <td>RCC concrete casting, bridge decks, structural columns, beams, high-repetition slabs</td>
+                  <td class="text-center">
+                    <a href="products/film-faced-plywood.html" class="table-action-link">View Specs <i class="bi bi-arrow-right"></i></a>
+                  </td>
+                </tr>
+
+                <!-- Alternate Plywood -->
+                <tr data-category="interior">
+                  <td>
+                    <strong class="badge-grade-title">Alternate Plywood</strong>
+                    <small class="text-muted">Balanced Dual Species Core</small>
+                  </td>
+                  <td><span class="badge-code-pill is303">Composite Formulation</span></td>
+                  <td><strong>Synthetic Polymer Adhesive</strong><br/><small class="text-muted">Optimized tack adhesive</small></td>
+                  <td>
+                    <div class="badge-water-res interior">
+                      <i class="bi bi-check2-circle fs-5 text-warning"></i>
+                      <span>Moderate Humidity Tolerant<br/><small class="text-muted fw-normal">Balanced internal stress</small></span>
+                    </div>
+                  </td>
+                  <td>Decorative panelling, office workstation desks, light-weight interior partitions, ceilings</td>
+                  <td class="text-center">
+                    <a href="products/alternate-plywood.html" class="table-action-link">View Specs <i class="bi bi-arrow-right"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- FAQs Accordion -->
@@ -999,6 +1093,106 @@
     </section>
 
     <!-- 9. Enquiry & Quote Section: Complete, Clean Two-Column Layout -->
+    <!-- Leadership & Factory Sales Team -->
+    <section id="leadership-team" class="section-padding bg-warm">
+      <div class="container-xxl px-4">
+        <div class="section-title text-center">
+          <span class="section-eyebrow">Factory Leadership</span>
+          <h2 class="display-6">Meet the Mill Leadership &amp; Sales Desk</h2>
+          <p class="section-subtitle">Direct, personal point-of-contact for technical specifications, quotations, and wholesale distribution.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <!-- Leader 1: Muneer K H -->
+          <div class="col-md-6 col-lg-4">
+            <div class="team-card-modern">
+              <div class="team-avatar-container">
+                <div class="team-avatar-ring"></div>
+                <img src="img/team-1.jpg" alt="Muneer K H - Managing Partner" class="team-avatar-img" width="136" height="136" loading="lazy"/>
+                <div class="team-status-pill" title="Active at Perumbavoor Plant">
+                  <span class="status-dot"></span> Plant Active
+                </div>
+              </div>
+              <h3 class="team-name">Muneer K H</h3>
+              <div><span class="team-role">Managing Partner</span></div>
+              <p class="team-bio">Directs timber procurement, raw material quality control, and production scheduling at our Perumbavoor manufacturing facility.</p>
+              <div class="team-tags">
+                <span class="team-tag">Timber Procurement</span>
+                <span class="team-tag">Hot-Press Operation</span>
+                <span class="team-tag">IS:710 Compliance</span>
+              </div>
+              <div class="team-contact-actions">
+                <a href="tel:+919745450618" class="team-action-btn team-action-call">
+                  <i class="bi bi-telephone-fill text-danger"></i> +91 97454 50618
+                </a>
+                <a href="https://wa.me/919745450618?text=Hello%20Muneer%2C%20I%20would%20like%20to%20discuss%20plywood%20manufacturing%20specifications." target="_blank" rel="noopener noreferrer" class="team-action-btn team-action-wa">
+                  <i class="bi bi-whatsapp"></i> WhatsApp Muneer
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Leader 2: Mahin K.H -->
+          <div class="col-md-6 col-lg-4">
+            <div class="team-card-modern">
+              <div class="team-avatar-container">
+                <div class="team-avatar-ring"></div>
+                <img src="img/team-3.jpg" alt="Mahin K.H - Head of Sales & Business Development" class="team-avatar-img" width="136" height="136" loading="lazy"/>
+                <div class="team-status-pill" title="Commercial Sales Available">
+                  <span class="status-dot"></span> Sales Desk
+                </div>
+              </div>
+              <h3 class="team-name">Mahin K.H</h3>
+              <div><span class="team-role">Head of Sales &amp; Business Dev</span></div>
+              <p class="team-bio">Leads institutional sales, contractor relationships, architectural specifications, dealer networks, and commercial bulk quotations.</p>
+              <div class="team-tags">
+                <span class="team-tag">Institutional Tenders</span>
+                <span class="team-tag">Architectural Specs</span>
+                <span class="team-tag">Wholesale Pricing</span>
+              </div>
+              <div class="team-contact-actions">
+                <a href="tel:+919526029853" class="team-action-btn team-action-call">
+                  <i class="bi bi-telephone-fill text-danger"></i> +91 95260 29853
+                </a>
+                <a href="https://wa.me/919526029853?text=Hello%20Mahin%2C%20I%20would%20like%20to%20request%20a%20commercial%20plywood%20quotation." target="_blank" rel="noopener noreferrer" class="team-action-btn team-action-wa">
+                  <i class="bi bi-whatsapp"></i> WhatsApp Mahin
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Leader 3: Muhsin -->
+          <div class="col-md-6 col-lg-4">
+            <div class="team-card-modern">
+              <div class="team-avatar-container">
+                <div class="team-avatar-ring"></div>
+                <img src="img/team-2.jpg" alt="Muhsin - Customer Relations & Dispatch Logistics" class="team-avatar-img" width="136" height="136" loading="lazy"/>
+                <div class="team-status-pill" title="Active Dispatch Operations">
+                  <span class="status-dot"></span> Logistics Active
+                </div>
+              </div>
+              <h3 class="team-name">Muhsin</h3>
+              <div><span class="team-role">Customer Relations &amp; Dispatch</span></div>
+              <p class="team-bio">Coordinates dispatch schedules, transport fleets, live order tracking, and client after-sales support to ensure punctual on-site delivery.</p>
+              <div class="team-tags">
+                <span class="team-tag">Fleet Logistics</span>
+                <span class="team-tag">Site Delivery</span>
+                <span class="team-tag">Client Support</span>
+              </div>
+              <div class="team-contact-actions">
+                <a href="tel:+919745450618" class="team-action-btn team-action-call">
+                  <i class="bi bi-telephone-fill text-danger"></i> +91 97454 50618
+                </a>
+                <a href="https://wa.me/919745450618?text=Hello%20Muhsin%2C%20I%20would%20like%20to%20check%20an%20order%20dispatch%20status." target="_blank" rel="noopener noreferrer" class="team-action-btn team-action-wa">
+                  <i class="bi bi-whatsapp"></i> WhatsApp Muhsin
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="quote" class="section-padding quote-section">
       <div class="container-xxl px-4">
         <div class="row g-5 align-items-stretch">
@@ -1192,7 +1386,7 @@
       <div class="footer-bottom text-center">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
           <span>&copy; 2026 Newtech Ply &amp; Boards. All Rights Reserved.</span>
-          <span>Website modernization by <a href="https://infinio.co.in/" target="_blank" rel="noopener noreferrer">Infinio Technology Solutions</a>.</span>
+          <span>Website Designed &amp; Developed by <a href="https://infinio.co.in/" target="_blank" rel="noopener noreferrer">Infinio Technology Solutions</a></span>
         </div>
       </div>
     </div>

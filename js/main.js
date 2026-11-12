@@ -256,4 +256,34 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // 7. Interactive Plywood Comparison Table Filter
+    const filterBtns = document.querySelectorAll('.table-filter-btn');
+    const tableRows = document.querySelectorAll('.comparison-table tbody tr[data-category]');
+
+    if (filterBtns.length && tableRows.length) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.getAttribute('data-filter');
+
+                tableRows.forEach(row => {
+                    const category = row.getAttribute('data-category') || '';
+                    if (filter === 'all' || category.includes(filter)) {
+                        row.style.display = '';
+                        row.style.opacity = '0';
+                        setTimeout(() => {
+                            row.style.transition = 'opacity 0.25s ease';
+                            row.style.opacity = '1';
+                        }, 10);
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
 });
